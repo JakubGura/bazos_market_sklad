@@ -1,8 +1,232 @@
 object Form1: TForm1
-  Left = 264
-  Height = 240
-  Top = 186
-  Width = 320
+  Left = 370
+  Height = 570
+  Top = 309
+  Width = 925
   Caption = 'Form1'
-  LCLVersion = '1.4.0.4'
+  ClientHeight = 570
+  ClientWidth = 925
+  OnCreate = FormCreate
+  LCLVersion = '1.8.2.0'
+  object Image2: TImage
+    Left = -16
+    Height = 624
+    Top = -32
+    Width = 954
+  end
+  object Edit1: TEdit
+    Left = 643
+    Height = 23
+    Top = 272
+    Width = 93
+    TabOrder = 0
+    Text = 'Edit1'
+  end
+  object Button1: TButton
+    Left = 643
+    Height = 39
+    Top = 320
+    Width = 94
+    Caption = 'hladaj'
+    OnClick = Button1Click
+    TabOrder = 1
+  end
+  object Image1: TImage
+    Left = 72
+    Height = 345
+    Top = 48
+    Width = 545
+    OnClick = Image1Click
+  end
+  object Label1: TLabel
+    Left = 104
+    Height = 25
+    Top = 56
+    Width = 64
+    Caption = 'NAZOV'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -18
+    Font.Name = '@Malgun Gothic'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    OnClick = Label1Click
+  end
+  object Label2: TLabel
+    Left = 200
+    Height = 25
+    Top = 56
+    Width = 48
+    Caption = 'CENA'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -18
+    Font.Name = '@Malgun Gothic'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    OnClick = Label2Click
+  end
+  object Label3: TLabel
+    Left = 280
+    Height = 25
+    Top = 56
+    Width = 39
+    Caption = 'KOD'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -18
+    Font.Name = '@Malgun Gothic'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 344
+    Height = 25
+    Top = 56
+    Width = 102
+    Caption = 'MNOZSTVO'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -18
+    Font.Name = '@Malgun Gothic'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 472
+    Height = 25
+    Top = 56
+    Width = 120
+    Caption = 'OBJEDNAVKA'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -18
+    Font.Name = '@Malgun Gothic'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Memo1: TMemo
+    Left = 640
+    Height = 102
+    Top = 48
+    Width = 206
+    Lines.Strings = (
+      'Memo1'
+    )
+    TabOrder = 2
+  end
+  object Button2: TButton
+    Left = 643
+    Height = 31
+    Top = 184
+    Width = 94
+    Caption = 'nazov'
+    OnClick = Button2Click
+    TabOrder = 3
+  end
+  object Button3: TButton
+    Left = 643
+    Height = 31
+    Top = 224
+    Width = 94
+    Caption = 'kod'
+    OnClick = Button3Click
+    TabOrder = 4
+  end
+  object Edit2: TEdit
+    Left = 480
+    Height = 23
+    Top = 104
+    Width = 100
+    TabOrder = 5
+    Text = 'Edit2'
+  end
+  object Edit3: TEdit
+    Left = 480
+    Height = 23
+    Top = 136
+    Width = 100
+    TabOrder = 6
+    Text = 'Edit3'
+  end
+  object Edit4: TEdit
+    Left = 480
+    Height = 23
+    Top = 168
+    Width = 100
+    TabOrder = 7
+    Text = 'Edit4'
+  end
+  object Edit5: TEdit
+    Left = 480
+    Height = 23
+    Top = 200
+    Width = 100
+    TabOrder = 8
+    Text = 'Edit5'
+  end
+  object Edit6: TEdit
+    Left = 480
+    Height = 23
+    Top = 232
+    Width = 100
+    TabOrder = 9
+    Text = 'Edit6'
+  end
+  object Edit7: TEdit
+    Left = 480
+    Height = 23
+    Top = 264
+    Width = 100
+    TabOrder = 10
+    Text = 'Edit7'
+  end
+  object Button4: TButton
+    Left = 480
+    Height = 35
+    Top = 312
+    Width = 94
+    Caption = 'objednaj'
+    OnClick = Button4Click
+    TabOrder = 11
+  end
+  object Label6: TLabel
+    Left = 72
+    Height = 38
+    Top = 8
+    Width = 114
+    Caption = 'SKLAD'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -33
+    Font.Name = 'Arial Rounded MT Bold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+  end
+  object Button5: TButton
+    Left = 560
+    Height = 59
+    Top = 416
+    Width = 57
+    Caption = 'domov'
+    OnClick = Button5Click
+    TabOrder = 12
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    left = 72
+    top = 400
+  end
 end
