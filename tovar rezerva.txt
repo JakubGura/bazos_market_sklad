@@ -1,0 +1,25 @@
+rozok
+7
+100
+1
+praclik
+59
+101
+1
+jablka kg
+229
+102
+1
+citron ks
+29
+103
+1
+mlieko
+99
+104
+1
+tvaroh
+119
+105
+1
+

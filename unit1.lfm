@@ -1,11 +1,12 @@
 object Form1: TForm1
-  Left = 370
+  Left = 961
   Height = 570
-  Top = 309
+  Top = 177
   Width = 925
   Caption = 'Form1'
   ClientHeight = 570
   ClientWidth = 925
+  DesignTimePPI = 120
   OnCreate = FormCreate
   LCLVersion = '1.8.2.0'
   object Image2: TImage
@@ -16,7 +17,7 @@ object Form1: TForm1
   end
   object Edit1: TEdit
     Left = 643
-    Height = 23
+    Height = 28
     Top = 272
     Width = 93
     TabOrder = 0
@@ -145,7 +146,7 @@ object Form1: TForm1
   end
   object Edit2: TEdit
     Left = 480
-    Height = 23
+    Height = 28
     Top = 104
     Width = 100
     TabOrder = 5
@@ -153,7 +154,7 @@ object Form1: TForm1
   end
   object Edit3: TEdit
     Left = 480
-    Height = 23
+    Height = 28
     Top = 136
     Width = 100
     TabOrder = 6
@@ -161,7 +162,7 @@ object Form1: TForm1
   end
   object Edit4: TEdit
     Left = 480
-    Height = 23
+    Height = 28
     Top = 168
     Width = 100
     TabOrder = 7
@@ -169,7 +170,7 @@ object Form1: TForm1
   end
   object Edit5: TEdit
     Left = 480
-    Height = 23
+    Height = 28
     Top = 200
     Width = 100
     TabOrder = 8
@@ -177,7 +178,7 @@ object Form1: TForm1
   end
   object Edit6: TEdit
     Left = 480
-    Height = 23
+    Height = 28
     Top = 232
     Width = 100
     TabOrder = 9
@@ -185,7 +186,7 @@ object Form1: TForm1
   end
   object Edit7: TEdit
     Left = 480
-    Height = 23
+    Height = 28
     Top = 264
     Width = 100
     TabOrder = 10
@@ -207,7 +208,7 @@ object Form1: TForm1
     Width = 114
     Caption = 'SKLAD'
     Font.CharSet = ANSI_CHARSET
-    Font.Color = clBlue
+    Font.Color = clYellow
     Font.Height = -33
     Font.Name = 'Arial Rounded MT Bold'
     Font.Pitch = fpVariable
