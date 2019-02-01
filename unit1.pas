@@ -11,8 +11,8 @@ uses
 const maxpocet=20;
 type
   zoznam=record
-         nazov,cena:String;
-         kod,mnozstvo:Integer;
+         nazov:String;
+         kod,mnozstvo,cena:Integer;
          end;
   { TForm1 }
 
@@ -72,6 +72,7 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
   var j:Integer;
 begin
+
  // Image3.Picture.LoadfromFile('pozadie2.jpg');
   Image2.Picture.LoadfromFile('pozadie1.jpg');
   Image1.Canvas.Fillrect(ClientRect);
@@ -98,16 +99,17 @@ begin
       Readln(subor,polozka[cislopolozky].mnozstvo);
 
     end;
-
+  Closefile(subor);  //cim skor zavriet subor
     pocet:=cislopolozky;
 
     for j:=1 to cislopolozky do
     begin
     Image1.Canvas.TextOut(50,30+35*j,polozka[j].nazov);
-    Image1.Canvas.TextOut(140,30+35*j,polozka[j].cena);
+    Image1.Canvas.TextOut(140,30+35*j,InttoStr(polozka[j].cena));
     Image1.Canvas.TextOut(220,30+35*j,InttoStr(polozka[j].kod));
     Image1.Canvas.TextOut(320,30+35*j,InttoStr(polozka[j].mnozstvo));
     end;
+
     end;
 
 procedure TForm1.Image1Click(Sender: TObject);
@@ -142,7 +144,7 @@ begin
   Image1.Canvas.Fillrect(Clientrect);
 
   Image1.Canvas.TextOut(50,30+30,polozka[cislopolozky].nazov);
-  Image1.Canvas.TextOut(140,30+30,polozka[cislopolozky].cena);
+  Image1.Canvas.TextOut(140,30+30,InttoStr(polozka[cislopolozky].cena));
   Image1.Canvas.TextOut(220,30+30,InttoStr(polozka[cislopolozky].kod));
   Image1.Canvas.TextOut(320,30+30,InttoStr(polozka[cislopolozky].mnozstvo));
 
@@ -165,6 +167,7 @@ begin
 end;
 
 procedure TForm1.Button4Click(Sender: TObject);
+  var i:Integer;
 begin
    if StrtoInt(Edit2.Text)>0 then
     begin
@@ -195,18 +198,35 @@ begin
     begin
      polozka[6].mnozstvo:=polozka[6].mnozstvo+StrtoInt(Edit7.Text);
     end;
+ //nejde menit v subore,zapisovat
+  Assignfile(subor,'tovar.txt');
+  Rewrite(subor);
+
+  for i:=1 to pocet do
+    begin
+      Writeln(subor,polozka[i].nazov);
+      Writeln(subor,polozka[i].cena);
+      Writeln(subor,InttoStr(polozka[i].kod));
+      Writeln(subor,InttoStr(polozka[i].mnozstvo));
+    end;
 end;
 
 procedure TForm1.Button5Click(Sender: TObject);
   var j:Integer;
 begin
+  Edit3.Visible:=true;      //zapnutie  moznosti objednavania
+  Edit4.Visible:=true;
+  Edit5.Visible:=true;
+  Edit6.Visible:=true;
+  Edit7.Visible:=true;
+
   Timer1.Enabled:=true;
   Image1.Canvas.Fillrect(Clientrect);
 
       for j:=1 to pocet do
     begin
     Image1.Canvas.TextOut(50,30+35*j,polozka[j].nazov);
-    Image1.Canvas.TextOut(140,30+35*j,polozka[j].cena);
+    Image1.Canvas.TextOut(140,30+35*j,InttoStr(polozka[j].cena));
     Image1.Canvas.TextOut(220,30+35*j,InttoStr(polozka[j].kod));
     Image1.Canvas.TextOut(320,30+35*j,InttoStr(polozka[j].mnozstvo));
     end;
@@ -223,34 +243,41 @@ begin
 end;
 
 procedure TForm1.Label2Click(Sender: TObject);
-  var i,j,k,pocetTriedenie,najvacsie,pomocna:Integer;
+  var i,j,k,pocetTriedenie,najindex,pomocna:Integer;
   triedenieCena:array[1..maxpocet]of Integer;
 begin
-  pocetTriedenie:=pocet;
+  Timer1.Enabled:=false;
+  Image1.Canvas.Fillrect(Clientrect);
+
 
  for i:=1 to pocet do
    begin
-     triedenieCena[i]:=StrtoInt(polozka[i].cena);
+     triedenieCena[i]:=i;
    end;
 
- for j:=1 to pocetTriedenie do
+
+
+ for pocetTriedenie:= pocet downto 2 do
    begin
-     if triedenieCena[j]<triedenieCena[j+1] then
-      begin
-       najvacsie:=j+1;
-      end;
-     pomocna:=triedenieCena[pocetTriedenie];
-     triedenieCena[pocetTriedenie]:=najvacsie;
-     triedenieCena[najvacsie]:=pomocna;
-     dec(pocetTriedenie);
-   end;
+     najindex:=1;
+     for j:=2 to pocetTriedenie do
+       begin
+         if polozka[triedenieCena[j]].cena>polozka[triedenieCena[najindex]].cena then
+          begin
+           najindex:=j;
+          end;
+         pomocna:=triedenieCena[pocetTriedenie];
+         triedenieCena[pocetTriedenie]:=triedenieCena[najindex];
+         triedenieCena[najindex]:=pomocna;
+       end;
+     end;
 
       for k:=1 to pocet do
         begin
-          Image1.Canvas.TextOut(50,30+35*k,polozka[k].nazov);
-          Image1.Canvas.TextOut(140,30+35*k,polozka[k].cena);
-          Image1.Canvas.TextOut(220,30+35*k,InttoStr(polozka[k].kod));
-          Image1.Canvas.TextOut(320,30+35*k ,InttoStr(polozka[k].mnozstvo));
+          Image1.Canvas.TextOut(50,30+35*k,polozka[triedenieCena[k]].nazov);
+          Image1.Canvas.TextOut(140,30+35*k,InttoStr(polozka[triedenieCena[k]].cena));
+          Image1.Canvas.TextOut(220,30+35*k,InttoStr(polozka[triedenieCena[k]].kod));
+          Image1.Canvas.TextOut(320,30+35*k ,InttoStr(polozka[triedenieCena[k]].mnozstvo));
         end;
 
 end;
@@ -271,7 +298,7 @@ begin
       for j:=1 to pocet do
     begin
     Image1.Canvas.TextOut(50,30+35*j,polozka[j].nazov);
-    Image1.Canvas.TextOut(140,30+35*j,polozka[j].cena);
+    Image1.Canvas.TextOut(140,30+35*j,InttoStr(polozka[j].cena));
     Image1.Canvas.TextOut(220,30+35*j,InttoStr(polozka[j].kod));
     Image1.Canvas.TextOut(320,30+35*j,InttoStr(polozka[j].mnozstvo));
     end;
