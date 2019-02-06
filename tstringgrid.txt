@@ -1,0 +1,19 @@
+TStringGrid
+do kazdej bunky string
+zapisovanie do bunky: TStringGrid1.Cells[0,0]:= (cislovanie od 0)
+fixedRow - nadpisy
+
+event onClick
+
+TStringrid1.
+Row, Col
+RowCount, ColCount
+
+procedure DeleteRow(Grid: TStringGrid; ARow: Integer);
+var
+  i: Integer;
+begin
+  for i := ARow to Grid.RowCount - 2 do
+    Grid.Rows[i].Assign(Grid.Rows[i + 1]);
+  Grid.RowCount := Grid.RowCount - 1;
+end;
